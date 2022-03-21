@@ -1,5 +1,6 @@
 import NotesView from "./NotesView";
 import NotesApi from "./NotesAPI";
+import NotesAPI from "./NotesAPI";
 
 export default class App {
   constructor(root) {
@@ -11,7 +12,7 @@ export default class App {
   }
 
    _refreshNotes() {
-     const notes = NotesApi.getAllNotes();
+     const notes = NotesAPI.getAllNotes();
 
      this.setNotes(notes);
 
@@ -45,12 +46,12 @@ export default class App {
             body: "Take note..."
           };
 
-          NotesApi.saveNote(newNote);
+          NotesAPI.saveNote(newNote);
           this._refreshNotes();
         },
 
         onNoteEdit: (title, body) => {
-          NotesApi.saveNote({
+          NotesAPI.saveNote({
             id: this.activeNote.id,
             title,
             body
@@ -60,7 +61,7 @@ export default class App {
         },
 
         onNoteDelete: noteId => {
-          NotesApi.deleteNote(noteId);
+          NotesAPI.deleteNote(noteId);
           this._refreshNotes();
         },
       };
